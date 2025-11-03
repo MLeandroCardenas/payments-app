@@ -1,0 +1,40 @@
+<mat-form-field>
+  <mat-label>Buscar</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+</mat-form-field>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="numeroReferencia">
+    <th mat-header-cell *matHeaderCellDef> Número referencia </th>
+    <td mat-cell *matCellDef="let element"> {{element.numeroReferencia}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="totalCompra">
+    <th mat-header-cell *matHeaderCellDef> Total compra </th>
+    <td mat-cell *matCellDef="let element"> {{ element.totalCompra }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="estadoTransaccion">
+    <th mat-header-cell *matHeaderCellDef> Estado transacción </th>
+    <td mat-cell *matCellDef="let element"> {{element.estadoTransaccion}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaTransaccion">
+    <th mat-header-cell *matHeaderCellDef> Fecha transacción </th>
+    <td mat-cell *matCellDef="let element"> {{element.fechaTransaccion | date:'dd/MM/yy HH:mm:ss'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="fechaAnulacion">
+    <th mat-header-cell *matHeaderCellDef> Fecha anulación </th>
+    <td mat-cell *matCellDef="let element"> {{element.fechaAnulacion | date:'dd/MM/yy HH:mm:ss'}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No se encontraron resultados "{{input.value}}"</td>
+  </tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 50, 100]" showFirstLastButtons aria-label="Selecione página"></mat-paginator>

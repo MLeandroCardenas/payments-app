@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Registrar Transacción</h2>
+
+<mat-dialog-content [formGroup]="payForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Identificador</mat-label>
+    <input matInput formControlName="identificador" />
+    @if (payForm.get('identificador')?.invalid && payForm.get('identificador')?.touched) {
+      <mat-error>Debe tener 64 caracteres hexadecimales</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Número de Referencia</mat-label>
+    <input matInput formControlName="numeroReferencia" />
+    @if (payForm.get('numeroReferencia')?.invalid && payForm.get('numeroReferencia')?.touched) {
+      <mat-error>Debe ser un número de 6 dígitos</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Total de la Compra</mat-label>
+    <input matInput type="number" formControlName="totalCompra" />
+    @if (payForm.get('totalCompra')?.invalid && payForm.get('totalCompra')?.touched) {
+      <mat-error>Ingrese un monto válido mayor a 0</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Dirección</mat-label>
+    <input matInput formControlName="direccion" />
+    @if (payForm.get('direccion')?.invalid && payForm.get('direccion')?.touched) {
+      <mat-error>Campo requerido (mínimo 5 caracteres)</mat-error>
+    }
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">Guardar</button>
+</mat-dialog-actions>

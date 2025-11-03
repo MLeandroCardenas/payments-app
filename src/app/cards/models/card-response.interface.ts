@@ -3,5 +3,5 @@ export interface CardResponse {
     tipo: string;
     estado: string;
     numeroValidacion: number;
-    identificador: number;
+    identificador: string;
 }
