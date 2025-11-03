@@ -1,0 +1,9 @@
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: calc(100vh - 64px);
+  padding-top: 4rem;
+  box-sizing: border-box;
+  background-color: #f7f7f9;
+}

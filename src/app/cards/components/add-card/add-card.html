@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Insertar una tarjeta</h2>
+
+<mat-dialog-content [formGroup]="cardForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Número de tarjeta</mat-label>
+    <input matInput formControlName="pan" />
+    @if (cardForm.get('pan')?.invalid && cardForm.get('pan')?.touched) {
+      <mat-error>Número de tarjeta inválido o requerido</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Titular</mat-label>
+    <input matInput formControlName="titular" />
+    @if (cardForm.get('titular')?.invalid && cardForm.get('titular')?.touched) {
+      <mat-error>Campo requerido</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Cédula</mat-label>
+    <input matInput formControlName="cedula" />
+    @if (cardForm.get('cedula')?.invalid && cardForm.get('cedula')?.touched) {
+      <mat-error>Cédula inválida o requerida</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Tipo</mat-label>
+    <mat-select formControlName="tipo">
+      <mat-option value="C">Crédito</mat-option>
+      <mat-option value="D">Débito</mat-option>
+    </mat-select>
+    @if (cardForm.get('tipo')?.invalid && cardForm.get('tipo')?.touched) {
+      <mat-error>Seleccione un tipo</mat-error>
+    }
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Teléfono</mat-label>
+    <input matInput formControlName="phone" />
+    @if (cardForm.get('phone')?.invalid && cardForm.get('phone')?.touched) {
+      <mat-error>Teléfono inválido o requerido</mat-error>
+    }
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-flat-button color="primary" (click)="onSubmit()">Guardar</button>
+</mat-dialog-actions>
